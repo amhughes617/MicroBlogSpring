@@ -13,10 +13,10 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue
-    @NotNull
     private int id;
     @Column(unique = true, nullable = false)
     private String userName;
+    @NotNull
     private String password;
 
     public User() {}

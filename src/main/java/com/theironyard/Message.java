@@ -4,12 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by alexanderhughes on 3/7/16.
  */
 @Entity
 public class Message {
+    @NotNull
     private String text;
     @Id
     @GeneratedValue

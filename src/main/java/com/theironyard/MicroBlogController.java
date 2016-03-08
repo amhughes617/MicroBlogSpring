@@ -29,15 +29,11 @@ public class MicroBlogController {
                 model.addAttribute("message", message);
                 return "edit";
             }
-            else {
-                model.addAttribute("userName", user.getName());
-                model.addAttribute("messages", user.getList());
-                return "home";
-            }
-        }
-        else {
+            model.addAttribute("userName", user.getName());
+            model.addAttribute("messages", user.getList());
             return "home";
         }
+        return "home";
     }
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public String login(HttpSession session, String userName, String password) {
