@@ -16,15 +16,13 @@
 Messages by {{userName}}:</br>
 <ol>
     {{#messages}}
-    {{#isAuthor}}
     <form action="/delete" method="post">
     <li>
-        {{text}}
+        {{text}} <a href="/?id={{id}}">Edit</a>
         <input type="hidden" value="{{id}}" name="id">
         <button type="submit">Delete</button>
     </li>
     </form>
-    {{/isAuthor}}
     {{/messages}}
 </ol>
 <form action="/logout" method="post">

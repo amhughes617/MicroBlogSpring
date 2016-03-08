@@ -1,33 +1,32 @@
 package com.theironyard;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 /**
  * Created by alexanderhughes on 3/7/16.
  */
+@Entity
 public class Message {
-    private String text, author;
+    private String text;
+    @Id
+    @GeneratedValue
     private int id;
-    private boolean isAuthor;
 
-    public Message(String message, String author, int id) {
+    public Message() {}
+
+    public Message(String message) {
         this.text = message;
-        this.author = author;
-        this.id = id;
     }
 
-    public boolean isAuthor() {
-        return isAuthor;
+    public User getUser() {
+        return user;
     }
 
-    public void setAuthor(boolean author) {
-        isAuthor = author;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getId() {
@@ -45,4 +44,7 @@ public class Message {
     public void setText(String text) {
         this.text = text;
     }
+
+    @ManyToOne
+    private User user;
 }

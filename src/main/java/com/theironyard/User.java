@@ -1,19 +1,48 @@
 package com.theironyard;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by alexanderhughes on 3/7/16.
  */
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue
+    @NotNull
+    private int id;
+    @Column(unique = true, nullable = false)
     private String userName;
     private String password;
-    private ArrayList<Message> messages;
+
+    public User() {}
+
+    @OneToMany(mappedBy = "user")
+    private List<Message> list;
 
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
-        this.messages = new ArrayList<Message>();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Message> getList() {
+        return list;
+    }
+
+    public void setList(List<Message> list) {
+        this.list = list;
     }
 
     public String getName() {
@@ -30,13 +59,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public ArrayList<Message> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(ArrayList<Message> messages) {
-        this.messages = messages;
     }
 }
